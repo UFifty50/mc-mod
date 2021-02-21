@@ -3,9 +3,12 @@ package net.fabricmc.example;
 import java.rmi.registry.Registry;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 
 public class ExampleMod implements ModInitializer {
@@ -18,6 +21,7 @@ public class ExampleMod implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		System.out.println("Hello Fabric world!");
-		Registry.register(Registry.BLOCK, new Identifier("tutorial", "block0"), BLOCK1);
+		Registry.register(Registry.BLOCK, new Identifier("mc-mod", "block1"), BLOCK1);
+		Registry.register(Registry.ITEM, new Identifier("mc-mod", "block1"), new BlockItem(BLOCK1, new FabricItemSettings().group(ItemGroup.MISC)));
 	}
 }
